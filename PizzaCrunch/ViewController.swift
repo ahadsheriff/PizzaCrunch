@@ -7,12 +7,24 @@
 //
 
 import UIKit
+import HealthKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var displayData: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let healthStore = HKHealthStore()
+        
+        if let energyType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned) {
+            
+            let setType = Set<HKSampleType>(arrayLiteral: energyType)
+            healthStore.requestAuthorizationToShareTypes(setType, readTypes: setType, completion: { (success, error) -> Void in
+            })
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
