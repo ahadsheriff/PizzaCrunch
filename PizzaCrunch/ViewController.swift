@@ -8,6 +8,7 @@
 
 import UIKit
 import HealthKit
+import Foundation
 
 class ViewController: UIViewController {
     
@@ -38,7 +39,7 @@ class ViewController: UIViewController {
     
     func loadData() {
         
-        let startDate = NSDate()
+        let startDate = NSDate.distantPast()
         let endDate = NSDate()
         
         if let energyType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned) {
@@ -54,7 +55,7 @@ class ViewController: UIViewController {
             // Execute query and gather Health data
             
             
-            data.executeQuery(HKSampleQuery(sampleType: energyType, predicate: timeFrame, limit: 1, sortDescriptors: [sortDescriptor], resultsHandler: { (query: HKSampleQuery?, results: [HKSample]?, err: NSError?) -> Void in
+            data.executeQuery(HKSampleQuery(sampleType: energyType, predicate: timeFrame, limit: 0, sortDescriptors: [sortDescriptor], resultsHandler: { (query: HKSampleQuery?, results: [HKSample]?, err: NSError?) -> Void in
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     if err != nil {
@@ -62,13 +63,17 @@ class ViewController: UIViewController {
                         print(err)
                         return
                     }
-                    var labelText = ""
+                    var calories = 0
+                    
                     for result in results as! [HKQuantitySample]! {
                         // SUCCESS, use results here
-                        print("It works")
-                        labelText += "\(result)"
+                        print("Sample:", result)
+                        print("Quantity", Int(result.quantity.doubleValueForUnit(HKUnit.calorieUnit())), "Calories")
+                        calories += Int(result.quantity.doubleValueForUnit(HKUnit.calorieUnit()))
+                        
                     }
-                    self.displayData.text = labelText
+                    
+                    self.displayData.text = "\(String(calories)) Calories"
                 })
                 
             }))
