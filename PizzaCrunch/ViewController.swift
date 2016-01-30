@@ -24,7 +24,11 @@ class ViewController: UIViewController {
             
             let setType = Set<HKSampleType>(arrayLiteral: energyType)
             data.requestAuthorizationToShareTypes(setType, readTypes: setType, completion: { (success, error) -> Void in
-                self.loadData()
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.loadData()
+                })
+                
             })
             
         }
@@ -49,19 +53,24 @@ class ViewController: UIViewController {
             
             // Execute query and gather Health data
             
+            
             data.executeQuery(HKSampleQuery(sampleType: energyType, predicate: timeFrame, limit: 1, sortDescriptors: [sortDescriptor], resultsHandler: { (query: HKSampleQuery?, results: [HKSample]?, err: NSError?) -> Void in
-                if err != nil {
-                    // ERROR Occurred
-                    print(err)
-                    return
-                }
-                var labelText = ""
-                for result in results as! [HKQuantitySample]! {
-                    // SUCCESS, use results here
-                    print("It works")
-                    labelText += "\(result)"
-                }
-                self.displayData.text = labelText
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    if err != nil {
+                        // ERROR Occurred
+                        print(err)
+                        return
+                    }
+                    var labelText = ""
+                    for result in results as! [HKQuantitySample]! {
+                        // SUCCESS, use results here
+                        print("It works")
+                        labelText += "\(result)"
+                    }
+                    self.displayData.text = labelText
+                })
+                
             }))
             
         }
