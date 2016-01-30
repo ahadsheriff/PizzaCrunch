@@ -11,6 +11,8 @@ import HealthKit
 
 class ViewController: UIViewController {
     
+    var data = HKHealthStore()
+    
     @IBOutlet weak var displayData: UILabel!
 
     override func viewDidLoad() {
@@ -18,19 +20,22 @@ class ViewController: UIViewController {
         
         // Asks the user to allow access to HealthKit data
         
-        let healthStore = HKHealthStore()
-        
-        
-        // Start and end date are the same because we want to collect data within the same day
-        let startDate = NSDate()
-        let endDate = NSDate()
-        
         if let energyType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned) {
             
             let setType = Set<HKSampleType>(arrayLiteral: energyType)
-            healthStore.requestAuthorizationToShareTypes(setType, readTypes: setType, completion: { (success, error) -> Void in
+            data.requestAuthorizationToShareTypes(setType, readTypes: setType, completion: { (success, error) -> Void in
+                self.loadData()
             })
+            
         }
+
+        
+    }
+    
+    func loadData() {
+        
+        let startDate = NSDate()
+        let endDate = NSDate()
         
         if let energyType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned) {
             
@@ -44,28 +49,23 @@ class ViewController: UIViewController {
             
             // Execute query and gather Health data
             
-            healthStore.executeQuery(HKSampleQuery(sampleType: energyType, predicate: timeFrame, limit: 1, sortDescriptors: [sortDescriptor], resultsHandler: { (query: HKSampleQuery?, results: [HKSample]?, err: NSError?) -> Void in
+            data.executeQuery(HKSampleQuery(sampleType: energyType, predicate: timeFrame, limit: 1, sortDescriptors: [sortDescriptor], resultsHandler: { (query: HKSampleQuery?, results: [HKSample]?, err: NSError?) -> Void in
                 if err != nil {
-                    // ERROR Occurred, handled it
+                    // ERROR Occurred
                     print(err)
                     return
                 }
                 var labelText = ""
                 for result in results as! [HKQuantitySample]! {
                     // SUCCESS, use results here
+                    print("It works")
                     labelText += "\(result)"
                 }
                 self.displayData.text = labelText
             }))
             
         }
-        
-        
-        
-        
-        
-        //
-        
+
     }
 
     override func didReceiveMemoryWarning() {
