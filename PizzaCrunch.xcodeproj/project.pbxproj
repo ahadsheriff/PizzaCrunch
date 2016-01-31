@@ -34,6 +34,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		7BF7716F1C5E92DF0092515F /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		7BA3CD8B1C5C13FF00921514 /* PizzaCrunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PizzaCrunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BA3CD8E1C5C140000921514 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +154,7 @@
 				7BA3CD871C5C13FF00921514 /* Sources */,
 				7BA3CD881C5C13FF00921514 /* Frameworks */,
 				7BA3CD891C5C13FF00921514 /* Resources */,
+				7BF7716F1C5E92DF0092515F /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
@@ -201,6 +215,9 @@
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = T553ZGWA3B;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.HealthKit = {
 								enabled = 1;
 							};
@@ -498,6 +515,7 @@
 				7BA3CDB51C5C140000921514 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7BA3CDB61C5C140000921514 /* Build configuration list for PBXNativeTarget "PizzaCrunchTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +524,7 @@
 				7BA3CDB81C5C140000921514 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7BA3CDB91C5C140000921514 /* Build configuration list for PBXNativeTarget "PizzaCrunchUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +533,7 @@
 				7BA3CDBB1C5C140000921514 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

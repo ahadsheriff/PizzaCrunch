@@ -13,6 +13,7 @@ import Foundation
 class ViewController: UIViewController {
     
     var data = HKHealthStore()
+    var timer: NSTimer?
     
     @IBOutlet weak var pizzaData: UILabel!
     @IBOutlet weak var displayData: UILabel!
@@ -29,6 +30,10 @@ class ViewController: UIViewController {
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.loadData()
+                    
+                    // Below code attempts to refresh the loadData function periodically
+                    
+                    self.timer = NSTimer.scheduledTimerWithTimeInterval(15, target: self, selector: Selector("loadData"), userInfo: nil, repeats: true)
                 })
                 
             })
@@ -38,9 +43,17 @@ class ViewController: UIViewController {
         
     }
     
-    // Below code attempts to refresh the loadData function periodically
     
-    // var timer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: Selector("loadData"), userInfo: nil, repeats: true)
+    var time: NSDate?
+    
+    func fetch(completion: () -> Void) {
+        time = NSDate()
+        completion()
+    }
+    
+    
+    
+    // Collect and load the data
     
     func loadData() {
         
