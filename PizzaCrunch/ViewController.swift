@@ -9,6 +9,7 @@
 import UIKit
 import HealthKit
 import Foundation
+import WatchConnectivity
 
 class ViewController: UIViewController {
     
@@ -41,6 +42,19 @@ class ViewController: UIViewController {
         }
 
         
+    }
+    
+    func notifyWatch(data:String){
+        let session = WCSession.defaultSession()
+        if session.paired && session.watchAppInstalled {
+            
+            session.sendMessage(["data":data], replyHandler: { (dataReply) -> Void in
+                print("It works")
+                }, errorHandler: { (error) -> Void in
+                print("An error has occured \(error.localizedDescription)")
+                
+            })
+        }
     }
     
     
@@ -100,6 +114,8 @@ class ViewController: UIViewController {
                     
                     self.displayData.text = "\(String(calories)) Calories"
                     self.pizzaData.text = "\(String(pizzas))x"
+                    
+                    self.notifyWatch(self.pizzaData.text!)
                     
                 })
                 

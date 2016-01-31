@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import WatchConnectivity
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
+    
+    
     
     var window: UIWindow?
     
@@ -19,6 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(
             UIApplicationBackgroundFetchIntervalMinimum)
+        
+        if WCSession.isSupported() {
+            let session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+        }
         
         return true
     }
@@ -51,13 +60,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let viewController = window?.rootViewController as? ViewController {
             
-                viewController.fetch {
-                    viewController.loadData()
-                    completionHandler(.NewData)
-                }
+            viewController.fetch {
+                viewController.loadData()
+                completionHandler(.NewData)
+            }
         }
     }
-    
     
 }
 
