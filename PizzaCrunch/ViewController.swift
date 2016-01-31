@@ -37,6 +37,8 @@ class ViewController: UIViewController {
         
     }
     
+    // var timer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: Selector("loadData"), userInfo: nil, repeats: true)
+    
     func loadData() {
         
         let startDate = NSDate.distantPast()
@@ -64,12 +66,19 @@ class ViewController: UIViewController {
                         return
                     }
                     var calories = 0
+                    var pizzas = 0
                     
                     for result in results as! [HKQuantitySample]! {
                         // SUCCESS, use results here
+                        
                         print("Sample:", result)
                         print("Quantity", Int(result.quantity.doubleValueForUnit(HKUnit.calorieUnit())), "Calories")
+                        
                         calories += Int(result.quantity.doubleValueForUnit(HKUnit.calorieUnit()))
+                        
+                        pizzas = Int(calories/285)
+                        
+                        print("Pizzas", pizzas)
                         
                     }
                     
