@@ -79,7 +79,7 @@ class ViewController: UIViewController {
                         
                         calories += Int(result.quantity.doubleValueForUnit(HKUnit.calorieUnit()))
                         
-                        pizzas = Int(calories/285)
+                        pizzas = Int(calories/500)
                         
                         print("Pizzas", pizzas)
                         
