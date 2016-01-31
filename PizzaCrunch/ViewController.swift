@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     
     var data = HKHealthStore()
     
+    @IBOutlet weak var pizzaData: UILabel!
     @IBOutlet weak var displayData: UILabel!
 
     override func viewDidLoad() {
@@ -36,6 +37,8 @@ class ViewController: UIViewController {
 
         
     }
+    
+    // Below code attempts to refresh the loadData function periodically
     
     // var timer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: Selector("loadData"), userInfo: nil, repeats: true)
     
@@ -83,6 +86,8 @@ class ViewController: UIViewController {
                     }
                     
                     self.displayData.text = "\(String(calories)) Calories"
+                    self.pizzaData.text = "\(String(pizzas))x"
+                    
                 })
                 
             }))

@@ -17,8 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whk-fG-8z6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Pizza" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuN-kt-Dfg">
                                 <rect key="frame" x="279" y="289" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whk-fG-8z6">
+                                <rect key="frame" x="279" y="157" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -26,13 +32,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="whk-fG-8z6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7ct-cg-UI2"/>
-                            <constraint firstItem="whk-fG-8z6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="269" id="mci-Tl-Hr3"/>
+                            <constraint firstItem="whk-fG-8z6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-132.5" id="7ct-cg-UI2"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VuN-kt-Dfg" secondAttribute="bottom" constant="290" id="8Vt-wZ-lfU"/>
+                            <constraint firstItem="VuN-kt-Dfg" firstAttribute="leading" secondItem="whk-fG-8z6" secondAttribute="leading" id="K5z-V1-Xhy"/>
+                            <constraint firstItem="VuN-kt-Dfg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="k5d-ch-8lX"/>
+                            <constraint firstItem="whk-fG-8z6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="137" id="mci-Tl-Hr3"/>
                             <constraint firstItem="whk-fG-8z6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oET-M9-d8E"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="displayData" destination="whk-fG-8z6" id="VbV-ZZ-OuE"/>
+                        <outlet property="pizzaData" destination="VuN-kt-Dfg" id="1Rx-53-Mrh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
