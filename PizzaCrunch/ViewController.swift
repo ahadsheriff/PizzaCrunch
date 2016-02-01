@@ -227,13 +227,7 @@ class ViewController: UIViewController {
                                     }
                                     totalPiecesAdded = totalPiecesAdded + 13 - currentValue
                                     currentValue = totalPiecesAdded
-                                case caloriesPerPieces*14..<caloriesPerPieces*15 where self.caseBool14 == true:
-                                    for i in 0..<14{
-                                        self.arrayImage![i].alpha = 1
-                                        self.caseBool14 = false
-                                    }
-                                    totalPiecesAdded = totalPiecesAdded + 14 - currentValue
-                                    currentValue = 0
+
                                 default:
                                    print("Nothing")
                                 }
@@ -244,7 +238,7 @@ class ViewController: UIViewController {
 
                         print(totalPiecesAdded)
                     
-                        if totalPiecesAdded == 14{
+                        if calories%500 == 0{
                             print("Wat")
                             UIView.animateWithDuration(2, animations: {
                                 for i in 0..<14{
