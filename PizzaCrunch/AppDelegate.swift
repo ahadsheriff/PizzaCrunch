@@ -11,9 +11,7 @@ import WatchConnectivity
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
-    
-    
-    
+ 
     var window: UIWindow?
     
     
@@ -59,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
         if let viewController = window?.rootViewController as? ViewController {
-            
+            print("in delegate")
             viewController.fetch {
                 viewController.loadData()
                 completionHandler(.NewData)

@@ -22,6 +22,7 @@
 		7BF771901C5EB3AB0092515F /* PizzaCrunchWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7BF771721C5EB3AB0092515F /* PizzaCrunchWatch.app */; };
 		7BF771991C5EB4670092515F /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BF771981C5EB4670092515F /* Interface.storyboard */; };
 		7BF7719B1C5EB4760092515F /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF7719A1C5EB4760092515F /* InterfaceController.swift */; };
+		7BF7719F1C5EFF470092515F /* Vinegar Stroke.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7BF7719E1C5EFF470092515F /* Vinegar Stroke.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		7BF7718D1C5EB3AB0092515F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BF771981C5EB4670092515F /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
 		7BF7719A1C5EB4760092515F /* InterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		7BF7719E1C5EFF470092515F /* Vinegar Stroke.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vinegar Stroke.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				7BA3CD921C5C140000921514 /* Main.storyboard */,
 				7BA3CD951C5C140000921514 /* Assets.xcassets */,
 				7BA3CD971C5C140000921514 /* LaunchScreen.storyboard */,
+				7BF7719E1C5EFF470092515F /* Vinegar Stroke.ttf */,
 				7BA3CD9A1C5C140000921514 /* Info.plist */,
 			);
 			path = PizzaCrunch;
@@ -391,6 +394,7 @@
 			files = (
 				7BA3CD991C5C140000921514 /* LaunchScreen.storyboard in Resources */,
 				7BA3CD961C5C140000921514 /* Assets.xcassets in Resources */,
+				7BF7719F1C5EFF470092515F /* Vinegar Stroke.ttf in Resources */,
 				7BA3CD941C5C140000921514 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
