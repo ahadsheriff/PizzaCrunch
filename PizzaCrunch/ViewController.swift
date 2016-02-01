@@ -128,11 +128,12 @@ class ViewController: UIViewController {
                         
                         calories += Int(result.quantity.doubleValueForUnit(HKUnit.calorieUnit()))
                         print("Pizzas", pizzas)
-                        print("module", calories % 500)
+                        print(calories)
                             UIView.animateWithDuration(2, animations: {
-                                
+                                print("module", calories % 500)
+
                                 switch calories % 500{
-                              
+                                    
                                 case caloriesPerPieces..<caloriesPerPieces*2 where self.caseBool1 == true:
                                     self.arrayImage![0].alpha = 1
                                     totalPiecesAdded+=1
@@ -158,6 +159,7 @@ class ViewController: UIViewController {
                                         self.arrayImage![i].alpha = 1
                                         self.caseBool4 = false
                                     }
+                                    print("sdsd")
                                     totalPiecesAdded = totalPiecesAdded + 4 - currentValue
                                     currentValue = totalPiecesAdded
                                 case caloriesPerPieces*5..<caloriesPerPieces*6 where self.caseBool5 == true:
@@ -227,7 +229,13 @@ class ViewController: UIViewController {
                                     }
                                     totalPiecesAdded = totalPiecesAdded + 13 - currentValue
                                     currentValue = totalPiecesAdded
-
+                                case caloriesPerPieces*14..<caloriesPerPieces*15 where self.caseBool14 == true:
+                                    for i in 0..<14{
+                                        self.arrayImage![i].alpha = 1
+                                        self.caseBool14 = false
+                                    }
+                                    totalPiecesAdded = totalPiecesAdded + 14 - currentValue
+                                    currentValue = 14
                                 default:
                                    print("Nothing")
                                 }
