@@ -127,9 +127,10 @@ class ViewController: UIViewController {
                         print("Quantity", Int(result.quantity.doubleValueForUnit(HKUnit.calorieUnit())), "Calories")
                         
                         calories += Int(result.quantity.doubleValueForUnit(HKUnit.calorieUnit()))
-                        
                         print("Pizzas", pizzas)
+                        print("module", calories % 500)
                             UIView.animateWithDuration(2, animations: {
+                                
                                 switch calories % 500{
                               
                                 case caloriesPerPieces..<caloriesPerPieces*2 where self.caseBool1 == true:
@@ -264,6 +265,7 @@ class ViewController: UIViewController {
                             self.caseBool11  = true
                             self.caseBool12 = true
                             self.caseBool13 = true
+                            self.caseBool14 = true
                             totalPiecesAdded = 0
                             print(totalPiecesAdded)
                         }
