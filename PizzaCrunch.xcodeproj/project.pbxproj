@@ -201,6 +201,9 @@
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = TALKAB4XDB;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.HealthKit = {
 								enabled = 1;
 							};
