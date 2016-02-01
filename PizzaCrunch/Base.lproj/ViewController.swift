@@ -9,7 +9,6 @@
 import UIKit
 import HealthKit
 import Foundation
-import WatchConnectivity
 
 class ViewController: UIViewController {
     @IBOutlet weak var midTopRight: UIImageView!
@@ -52,21 +51,19 @@ class ViewController: UIViewController {
     
     
     override func viewDidLoad() {
-        print("first")
         super.viewDidLoad()
         
         // Asks the user to allow access to HealthKit data
         arrayImage = [midTopRight, topLeft, topRight, bottomLeft, bottomRight, bottomRight2, midLeft, tinyLeft, tinyRight, mid, bottomLeft2, mid2, midRight, midTopLeft]
         
         if let energyType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned) {
-            print("Test1")
             
             let setType = Set<HKSampleType>(arrayLiteral: energyType)
             data.requestAuthorizationToShareTypes(setType, readTypes: setType, completion: { (success, error) -> Void in
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.loadData()
-                    print("Test2")
+                    
                     // Below code attempts to refresh the loadData function periodically
                     
                     self.timer = NSTimer.scheduledTimerWithTimeInterval(15, target: self, selector: Selector("loadData"), userInfo: nil, repeats: true)
@@ -75,23 +72,8 @@ class ViewController: UIViewController {
             })
             
         }
-        print("Test3")
         
-    }
-    
-    
-    
-    func notifyWatch(data:String){
-        let session = WCSession.defaultSession()
-        if session.paired && session.watchAppInstalled {
-            
-            session.sendMessage(["data":data], replyHandler: { (dataReply) -> Void in
-                print("It works")
-                }, errorHandler: { (error) -> Void in
-                    print("An error has occured \(error.localizedDescription)")
-                    
-            })
-        }
+        
     }
     
     
@@ -292,9 +274,7 @@ class ViewController: UIViewController {
                     
                     
                     self.displayData.text = "\(String(calories)) Calories"
-                    self.pizzaData.text = "Slices:\(String(pizzas))x"
-                    
-                    self.notifyWatch(self.pizzaData.text!)
+                    self.pizzaData.text = "\(String(pizzas))x"
                     
                 })
                 
